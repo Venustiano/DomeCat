@@ -10,7 +10,11 @@ user-friendly tool that can perform such steps on a single graphical
 user interface (GUI). Additionally, includes a database to keep track
 of the transformed data and runtime of the procesess.
 
+![gui ubuntu](src/pics/DomeCat-Ubuntu.png)
+
 ## Installation
+
+The easiest way to run DomeCat is by downloading the executable files for Ubuntu, windows and MacOSX. The latest releases can be found [here](https://github.com/Venustiano/DomeCat/releases).
 
 ### Compile under Linux and OSX
 
@@ -54,8 +58,6 @@ pyinstaller --onefile --add-data "./env/lib/python3.9/site-packages/astroquery/C
 ```
 ./dist/domecat
 ```
-
-![gui ubuntu](src/pics/DomeCat-Ubuntu.png)
 
 ### Compile under Windows
 
@@ -120,12 +122,6 @@ pyinstaller.exe --onefile --add-data "./env/Lib/site-packages/astroquery/CITATIO
 ```
 .\dist\domecat.exe
 ```
-
-### Binary file
-
-- Linux (Ubuntu)
-- Windows
-- OSX
 
 ## Usage
 
