@@ -1,4 +1,4 @@
-# DomeCat
+# DomeCat 
 ## A Tool to Explore Astronomical Databases and Transform Data into Planetarium Formats
 
 The Virtual Observatory provides a valuable source for presentations
@@ -18,7 +18,7 @@ The easiest way to run DomeCat is by downloading the executable files for Ubuntu
 
 ### Compile under Linux and OSX
 
-1. Install `Python 3.9` if not installed and `venv`
+1. Install [![](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/) if not installed and `venv`
 ```
 apt install python3.9-dev python3.9-venv
 ```
@@ -67,8 +67,7 @@ git clone https://github.com/Venustiano/DomeCat.git
 cd ./DomeCat/src
 ```
 
-2. [Install python
-   3.9](https://www.python.org/downloads/release/python-391/) if
+2. Install [![](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/) if
    necessary and make sure you [add python to the
    `PATH`](https://docs.python.org/3/using/windows.html)
 
