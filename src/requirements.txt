@@ -1,0 +1,13 @@
+pandas
+wheel
+PyQt5
+qtawesome
+astroquery
+jsonschema
+rank_bm25
+numpy
+appdirs
+pyvo
+scipy
+SQLAlchemy
+pyinstaller

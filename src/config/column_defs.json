@@ -1,0 +1,99 @@
+{
+    "Speck": {
+	"GAIA": {
+	    "gaiaedr3.gaia_source": {
+		"RA": {
+		    "name": "ra"
+		},
+		"DEC": {
+		    "name": "dec"
+		},
+		"PARALLAX": {
+		    "name": "parallax"
+		},
+		"G_MEAN_MAG": {
+		    "name": "phot_g_mean_mag"
+		},
+		"BP_MEAN_MAG": {
+		    "name": "phot_bp_mean_mag"
+		},
+		"G_RP": {
+		    "name": "g_rp"
+		},
+		"PMRA": {
+		    "name": "pmra",
+		    "description": "Proper motion"
+		},
+		"PMDEC": {
+		    "name": "pmdec",
+		    "description": "Proper motion"
+		},
+		"RADIAL_VELOCITY": {
+		    "name": "dr2_radial_velocity",
+		    "description": "radial velocity"
+		},
+		"DISTANCE": {
+		    "name": "r_med_geo",
+		    "description": "The median of the geometric distance posterior. The geometric distance estimate."
+		}		
+	    },
+	    "external.gaiadr2_geometric_distance" : {
+		"DISTANCE": {
+		    "name":"r_est"
+		}
+	    },
+	    "default": {
+		"RA": {"name": "ra"},
+		"DEC": {"name": "dec"},
+		"PARALLAX": {"name": "parallax"},
+		"G_MEAN_MAG": {"name": "phot_g_mean_mag"},
+		"BP_MEAN_MAG": {"name": "phot_bp_mean_mag"},
+		"G_RP": {"name": "g_rp"},
+		"PMRA": { "name": "pmra",
+			  "description": "Proper motion"
+			},
+		"PMDEC": { "name": "pmdec",
+			  "description": "Proper motion"
+			 },
+		"RADIAL_VELOCITY": { "name" : "radial_velocity"},
+		"DISTANCE": {"name": "r_est"}
+	    }
+	},
+	"SDSS": {
+	    "default": {
+		"RA": {"name": "ra"},
+		"DEC": {"name": "dec"},
+		"PARALLAX": {"name": "parallax"},
+		"G_MEAN_MAG": {"name": "phot_g_mean_mag"},
+		"BP_MEAN_MAG": {"name": "phot_bp_mean_mag"},
+		"G_RP": {"name": "g_rp"},
+		"PMRA": { "name": "pmra",
+			  "description": "Proper motion"
+			},
+		"PMDEC": { "name": "pmdec",
+			  "description": "Proper motion"
+			 },
+		"RADIAL_VELOCITY": { "name" : "radial_velocity"},
+		"DISTANCE": {"name": "r_est"}
+	    }
+	},
+	"ESO_TAP_CAT": {
+	    "default": {
+		"RA": {"name": "RAJ2000"},
+		"DEC": {"name": "DECJ2000"},
+		"RED_SHIFT": {"name": "Z_B"},
+		"G_MEAN_MAG": {"name": "MAG_GAAP_g"},
+		"BP_MEAN_MAG": {"name": "COLOUR_GAAP_i_Z"},
+		"G_RP": {"name": "COLOUR_GAAP_r_i"},
+		"PMRA": { "name": "pmra",
+			  "description": "Proper motion"
+			},
+		"PMDEC": { "name": "pmdec",
+			  "description": "Proper motion"
+			 },
+		"RADIAL_VELOCITY": { "name" : "radial_velocity"},
+		"DISTANCE": {"name": "r_est"}
+	    }
+	}
+    }
+}

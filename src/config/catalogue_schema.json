@@ -1,0 +1,13 @@
+{
+  "type": "array",
+  "items": {
+      "type": "object",
+      "properties":{
+	  "catalogue_name": {"type": "string"},
+	  "authentication": {"type": "boolean"},
+	  "url": {"type": "string"},
+	  "signup": {"type": "string"}
+      }
+  },
+  "uniqueItems": true
+}
