@@ -72,7 +72,7 @@ cd ./DomeCat/src
 
 3. Create a virtual environment
 ```
-python3.9 -m venv env/
+python -m venv env/
 ```
 4. Activate the virtual environment
 ```
@@ -113,7 +113,7 @@ deactivate
 ```
 2. Run the following command
 ```
-pyinstaller.exe --onefile --add-data "./env/lib/python3.9/site-packages/astroquery/CITATION:astroquery/" --add-data "./config/*:config/" ./domecat.py
+pyinstaller.exe --onefile --add-data "./env/Lib/site-packages/astroquery/CITATION;astroquery/" --add-data "./config/*;config/" ./domecat.py
 ```
 3. Run the app
 
