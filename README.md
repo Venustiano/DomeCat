@@ -5,7 +5,7 @@ The Virtual Observatory provides a valuable source for presentations
 in digital planetaria. However, importing data into planetaria can be
 a time-consuming process because the data must be selected, downloaded
 and transformed into a format used in digital planetaria. The later
-step is typically done by means of ad-hoc scripts. DomeCat is
+step is typically done by means of ad-hoc scripts. DomeCat is a
 user-friendly tool that can perform such steps in a single graphical
 user interface (GUI). Additionally, includes a database to keep track
 of the transformed data and runtime of the procesess.
@@ -15,22 +15,22 @@ of the transformed data and runtime of the procesess.
 ### Compile under Linux and OSX
 
 1. Install `Python 3.9` and `venv` 
-2. Clone this repository.
+2. Open a terminal and clone this repository.
 ```
 git clone https://github.com/Venustiano/DomeCat.git
 ``` 
 3. Run
 
 ```
-source ./data2dot_env.sh
+source ./domecat-env.sh
 ```  
 
 This script will create and activate a virtual environment
-`env`, install the required packages and run `DomeCat.py`
+`env`, install the required packages and run `python DomeCat.py`
 
 4. If everything went fine, you'll see the GUI.
 
-5. When you are done close the app. Your current directory will be `(env)..:~/../data2dot/qtgui$`.  
+5. When you are done close the app. Your current directory will be the root of the repository.  
 
 6. Deactivate the environment.
 ```
@@ -51,7 +51,8 @@ deactivate
 ## License
 
 
-[GNU](LICENSE)
+[![License](https://img.shields.io/github/license/Venustiano/DomeCat)](/LICENSE)
+
 <!-- DomeCat has been developed for two main purposes. First, to provide a -->
 <!-- user friendly interface to explore and download data from different -->
 <!-- astronomical catalogues. Second, to transform data into planetarium -->
