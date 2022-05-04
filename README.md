@@ -21,7 +21,7 @@ apt install python3.9-dev python3.9-venv
 2. Clone this repository.
 ```
 git clone https://github.com/Venustiano/DomeCat.git
-cd ./DomeCat
+cd ./DomeCat/src
 ``` 
 3. Run
 
@@ -62,7 +62,7 @@ pyinstaller --onefile --add-data "./env/lib/python3.9/site-packages/astroquery/C
 1. In a powershell window, clone this repository
 ```
 git clone https://github.com/Venustiano/DomeCat.git
-cd ./DomeCat/
+cd ./DomeCat/src
 ```
 
 2. [Install python
