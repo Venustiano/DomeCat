@@ -14,7 +14,7 @@ of the transformed data and runtime of the procesess.
 
 ## Installation
 
-The easiest way to run DomeCat is by downloading the executable files for Ubuntu, windows and MacOSX. The latest releases can be found [here](https://github.com/Venustiano/DomeCat/releases).
+The easiest way to run DomeCat is by downloading an executable file for Ubuntu, Windows or MacOSX. The latest releases can be found [here](https://github.com/Venustiano/DomeCat/releases).
 
 ### Compile under Linux and OSX
 
