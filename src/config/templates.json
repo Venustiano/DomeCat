@@ -1,0 +1,161 @@
+{
+    "GAIA": {
+	"parallax": {
+		"description": "Estimate x, y and z from parallax",
+		"catalogue_name": "DR GAIA",
+		"tables": [
+		    {
+			"table_name": "gaiadr3.gaia_source",
+			"query_conditions": [
+			    {
+				"column": "dec"
+			    },
+			    {
+				"column": "parallax"
+			    },
+			    {
+				"column": "pmdec"
+			    },
+			    {
+				"column": "pmra"
+			    },
+			    {
+				"column": "ra"
+			    },
+			    {
+				"column": "phot_g_mean_mag"
+			    },
+			    {
+				"column": "phot_bp_mean_mag"
+			    },
+			    {
+				"column": "g_rp"
+			    },
+			    {
+				"column": "radial_velocity"
+			    }
+			]
+		    }
+		]
+	    },
+	"distance" : {
+		"description": "Estimate x, y and z from an available estimated distance",
+		"catalogue_name": "DR GAIA",
+		"tables": [
+		    {
+			"table_name": "gaiadr3.gaia_source",
+			"query_conditions": [
+			    {
+				"column": "dec"
+			    },
+			    {
+				"column": "pmdec"
+			    },
+			    {
+				"column": "pmra"
+			    },
+			    {
+				"column": "ra"
+			    },
+			    {
+				"column": "phot_g_mean_mag"
+			    },
+			    {
+				"column": "phot_bp_mean_mag"
+			    },
+			    {
+				"column": "g_rp"
+			    },
+			    {
+				"column": "radial_velocity"
+			    }
+			]
+		    },
+		    {
+			"table_name": "external.gaiaedr3_distance",
+			"query_conditions": [
+			    {
+				"column": "r_med_geo"
+			    }
+			]
+		    }
+		],
+		"cross_conditions": [
+		    {
+			"col_left": "external.gaiaedr3_distance.source_id",
+			"c_condition": "=",
+			"col_right": "gaiadr3.gaia_source.source_id"
+		    }
+		]
+	    }
+    },
+    "SDSS": {
+	"redshift": {
+	    "description": "Estimate x, y and z coordinates using redshift",
+	    "catalogue_name": "SDSS",
+	        "tables": [
+		    {
+			"table_name": "Galaxy",
+			"query_conditions": [
+			    {
+				"column": "dec"
+			    },
+			    {
+				"column": "ra"
+			    },
+			    {
+				"column": "psfMag_u"
+			    },
+			    {
+				"column": "psfMag_g"
+			    }
+			]
+		    },
+		    {
+			"table_name": "Photoz",
+			"query_conditions": [
+			    {
+				"column": "z"
+			    }
+			]
+		    }
+		],
+	    "cross_conditions": [
+		{
+		    "col_left": "Galaxy.objID",
+		    "c_condition": "=",
+		    "col_right": "Photoz.objID"
+		}
+	    ]
+	}
+    },
+    "ESO_TAP_CAT": {
+	"redshift": {
+	    "description": "Estimate x, y and z coordinates using redshift",
+	    "catalogue_name": "DR ESO_TAP_CAT",
+	    "tables": [
+		{
+		    "table_name": "safcat.KiDS_DR4_1_ugriZYJHKs_cat_fits",
+		    "query_conditions": [
+			{
+			    "column": "DECJ2000"
+			},
+			{
+			    "column": "RAJ2000"
+			},
+			{
+			    "column": "Z_B"
+			},
+			{
+			    "column": "MAG_GAAP_r"
+			},
+			{
+			    "column": "COLOUR_GAAP_u_g"
+			}
+		    ]
+		}
+	    ]
+	}
+
+    }
+}

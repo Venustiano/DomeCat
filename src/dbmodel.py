@@ -24,6 +24,7 @@ class Catalogue(Base):
     authentication = Column(Boolean,default=True)
     url = Column(String(512))
     signup = Column(String(512))
+    template = Column(String(32))
 
     ctable = relationship("Cat_table", back_populates="catalogue")
     cquery = relationship("CQuery", back_populates="catalogue",lazy="dynamic")

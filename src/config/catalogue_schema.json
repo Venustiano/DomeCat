@@ -6,7 +6,8 @@
 	  "catalogue_name": {"type": "string"},
 	  "authentication": {"type": "boolean"},
 	  "url": {"type": "string"},
-	  "signup": {"type": "string"}
+	  "signup": {"type": "string"},
+	  "template": {"type": "string"}
       }
   },
   "uniqueItems": true

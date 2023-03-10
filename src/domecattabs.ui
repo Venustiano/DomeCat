@@ -183,11 +183,14 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
-          <widget class="QLabel" name="label_conditions">
+          <widget class="QLabel" name="label_4">
            <property name="text">
-            <string>Selected columns</string>
+            <string>Template</string>
            </property>
           </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox_templates"/>
          </item>
          <item>
           <spacer name="horizontalSpacer_3">
@@ -203,33 +206,9 @@
           </spacer>
          </item>
          <item>
-          <widget class="QLabel" name="label_20">
+          <widget class="QLabel" name="label_conditions">
            <property name="text">
-            <string>File specs:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="lbl_speck">
-           <property name="toolTip">
-            <string/>
-           </property>
-           <property name="text">
-            <string>[Speck]</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="lbl_sfits">
-           <property name="text">
-            <string>[Single fits]</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="lbl_mfits">
-           <property name="text">
-            <string>[Multiple fits]</string>
+            <string>Selected columns</string>
            </property>
           </widget>
          </item>
@@ -246,7 +225,7 @@
             <x>0</x>
             <y>0</y>
             <width>627</width>
-            <height>72</height>
+            <height>74</height>
            </rect>
           </property>
          </widget>
@@ -370,7 +349,7 @@
             <x>0</x>
             <y>0</y>
             <width>627</width>
-            <height>72</height>
+            <height>73</height>
            </rect>
           </property>
          </widget>
@@ -1443,7 +1422,7 @@
      <x>0</x>
      <y>0</y>
      <width>864</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
    <property name="nativeMenuBar">

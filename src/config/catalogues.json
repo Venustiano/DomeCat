@@ -3,114 +3,133 @@
 	"catalogue_name": "DR GAIA",
 	"authentication": false,
 	"url": "https://sci.esa.int/web/gaia",
-	"signup":"https://www.cosmos.esa.int/web/gaia-users/register"
+	"signup":"https://www.cosmos.esa.int/web/gaia-users/register",
+	"template": "GAIA"
     },
     {
 	"catalogue_name": "DR ESO_TAP_CAT",
 	"authentication": false,
 	"url": "http://archive.eso.org/programmatic/#TAP",
-	"signup":""
+	"signup":"",
+	"template": "ESO_TAP_CAT"
     },
     {
 	"catalogue_name": "DR1 SDSS",
 	"authentication": true,
 	"url":"https://www.sdss.org/",
-	"signup":"https://apps.sciserver.org/login-portal/register"
+	"signup":"https://apps.sciserver.org/login-portal/register",
+	"template": "SDSS"
     },
     {
 	"catalogue_name": "DR2 SDSS",
 	"authentication": true,
 	"url":"https://www.sdss.org/",
-	"signup":"https://apps.sciserver.org/login-portal/register"
+	"signup":"https://apps.sciserver.org/login-portal/register",
+	"template": "SDSS"
     },
     {
 	"catalogue_name": "DR3 SDSS",
 	"authentication": true,
 	"url":"https://www.sdss.org/",
-	"signup":"https://apps.sciserver.org/login-portal/register"
+	"signup":"https://apps.sciserver.org/login-portal/register",
+	"template": "SDSS"
     },
     {
 	"catalogue_name": "DR4 SDSS",
 	"authentication": true,
 	"url":"https://www.sdss.org/",
-	"signup":"https://apps.sciserver.org/login-portal/register"
+	"signup":"https://apps.sciserver.org/login-portal/register",
+	"template": "SDSS"
     },
     {
 	"catalogue_name": "DR5 SDSS",
 	"authentication": true,
 	"url":"https://www.sdss.org/",
-	"signup":"https://apps.sciserver.org/login-portal/register"
+	"signup":"https://apps.sciserver.org/login-portal/register",
+	"template": "SDSS"
     },
     {
 	"catalogue_name": "DR6 SDSS",
 	"authentication": true,
 	"url":"https://www.sdss.org/",
-	"signup":"https://apps.sciserver.org/login-portal/register"
+	"signup":"https://apps.sciserver.org/login-portal/register",
+	"template": "SDSS"
     },
     {
 	"catalogue_name": "DR7 SDSS",
 	"authentication": true,
 	"url":"https://www.sdss.org/",
-	"signup":"https://apps.sciserver.org/login-portal/register"
+	"signup":"https://apps.sciserver.org/login-portal/register",
+	"template": "SDSS"
     },
     {
 	"catalogue_name": "DR8 SDSS",
 	"authentication": true,
 	"url":"https://www.sdss.org/",
-	"signup":"https://apps.sciserver.org/login-portal/register"
+	"signup":"https://apps.sciserver.org/login-portal/register",
+	"template": "SDSS"
     },
     {
 	"catalogue_name": "DR9 SDSS",
 	"authentication": true,
 	"url":"https://www.sdss.org/",
-	"signup":"https://apps.sciserver.org/login-portal/register"
+	"signup":"https://apps.sciserver.org/login-portal/register",
+	"template": "SDSS"
     },
     {
 	"catalogue_name": "DR10 SDSS",
 	"authentication": true,
 	"url":"https://www.sdss.org/",
-	"signup":"https://apps.sciserver.org/login-portal/register"
+	"signup":"https://apps.sciserver.org/login-portal/register",
+	"template": "SDSS"
     },
     {
 	"catalogue_name": "DR11 SDSS",
 	"authentication": true,
 	"url":"https://www.sdss.org/",
-	"signup":"https://apps.sciserver.org/login-portal/register"
+	"signup":"https://apps.sciserver.org/login-portal/register",
+	"template": "SDSS"
     },
     {
 	"catalogue_name": "DR12 SDSS",
 	"authentication": true,
 	"url":"https://www.sdss.org/",
-	"signup":"https://apps.sciserver.org/login-portal/register"
+	"signup":"https://apps.sciserver.org/login-portal/register",
+	"template": "SDSS"
     },
     {
 	"catalogue_name": "DR13 SDSS",
 	"authentication": true,
 	"url":"https://www.sdss.org/",
-	"signup":"https://apps.sciserver.org/login-portal/register"
+	"signup":"https://apps.sciserver.org/login-portal/register",
+	"template": "SDSS"
     },
     {
 	"catalogue_name": "DR14 SDSS",
 	"authentication": true,
 	"url":"https://www.sdss.org/",
-	"signup":"https://apps.sciserver.org/login-portal/register"
+	"signup":"https://apps.sciserver.org/login-portal/register",
+	"template": "SDSS"
     },
     {
 	"catalogue_name": "DR15 SDSS",
 	"authentication": true,
 	"url":"https://www.sdss.org/",
-	"signup":"https://apps.sciserver.org/login-portal/register"
+	"signup":"https://apps.sciserver.org/login-portal/register",
+	"template": "SDSS"
     },
     {
 	"catalogue_name": "DR16 SDSS",
 	"authentication": true,
 	"url":"https://www.sdss.org/",
-	"signup":"https://apps.sciserver.org/login-portal/register"
+	"signup":"https://apps.sciserver.org/login-portal/register",
+	"template": "SDSS"
     },
     {
 	"catalogue_name": "DR17 SDSS",
 	"authentication": true,
 	"url":"https://www.sdss.org/",
-	"signup":"https://apps.sciserver.org/login-portal/register"
+	"signup":"https://apps.sciserver.org/login-portal/register",
+	"template": "SDSS"
     }
 ]

@@ -3,7 +3,8 @@ import os
 from shutil import copy
 from appdirs import user_data_dir, user_config_dir
 from PyQt5.QtWidgets import (QMainWindow, QApplication, QWidget, QVBoxLayout,QHBoxLayout,QFileDialog,
-                             QLabel,QPushButton, QComboBox, QCompleter, QLineEdit, QDialog,QMessageBox,QStyle)
+                             QLabel,QPushButton, QComboBox, QCompleter, QLineEdit, QDialog,QMessageBox,
+                             QStyle)
 from PyQt5 import QtGui
 from PyQt5.QtCore import QTimer, Qt, pyqtSlot
 #from PyQt5.QtGui import QKeySequence
@@ -22,7 +23,8 @@ import json
 import jsonschema
 import re
 from jsonschema import validate
-from dbmodel import Catalogue, Base, Cat_table, TColumn, CQuery, ColQueryAssociation, CrossTableAssociation, DomeFormat, ops, ftypes
+from dbmodel import (Catalogue, Base, Cat_table, TColumn, CQuery, ColQueryAssociation,
+                     CrossTableAssociation, DomeFormat, ops, ftypes)
 from sqlalchemy.engine.url import URL
 from sqlalchemy import create_engine, and_, func
 from sqlalchemy.orm import sessionmaker
@@ -154,6 +156,8 @@ class AppWindow(QMainWindow):
         
         self.schema_file = "./config/catalogue_schema.json"
         self.catalogue_file = "./config/catalogues.json"
+        self.templates_file = "./config/templates.json"
+        self.templates_data = {}
 
         # TODO: Implement variable-match (cat-var <-> speck vars) functionality by means of the database
         # Potentially exclude column_defs
@@ -177,6 +181,7 @@ class AppWindow(QMainWindow):
         self.vbox.addStretch(1)
 
         self.ui.comboSelectSource.currentIndexChanged.connect(self.sourceCatalogueChange)
+        self.ui.comboBox_templates.currentTextChanged.connect(self.templateChange)
         self.ui.comboBox.currentTextChanged.connect(self.on_cb1_changed)
         self.ui.comboBox_3.currentTextChanged.connect(self.on_cb3_changed)
         self.ui.step_tabs.currentChanged.connect(self.on_convert)
@@ -247,7 +252,45 @@ class AppWindow(QMainWindow):
     def closeEvent(self, event):
         self.session.close()
         print("Close Event Called")
+
+    def templateChange(self):            
+
+        tempData = self.ui.comboSelectSource.currentData()
+
+        tkey = self.ui.comboBox_templates.currentText()
+
+        if tkey == '':
+            return
+
+        print("Current template: ",tkey)
         
+        # # Description
+        self.ui.lE_desc_query.setText(self.templates_data[tempData["template"]][tkey]["description"])
+        # # key
+        # self.ui.lE_keyq.setText(str(self.currentrecord.id))
+
+        
+        # # Tables
+        for ctab in self.templates_data[tempData["template"]][tkey]["tables"]:
+            print("TABLE:", ctab["table_name"])
+            self.add_treeItem(ctab["table_name"])
+            # Column conditions
+            for cond in ctab["query_conditions"]:
+                print("Column:",cond["column"])
+                self.add_condition(ctab["table_name"], cond["column"])
+            
+        # # Cross column conditions
+        for croscond in self.templates_data[tempData["template"]][tkey].get("cross_conditions",[]):
+            print("LEFT:",croscond["col_left"])
+            print("Condition:",croscond["c_condition"])
+            print("RIGHT:",croscond["col_right"])
+            self.add_condition_across_table(' '.join([croscond["col_left"],
+                                                     croscond["c_condition"],
+                                                      croscond["col_right"]]))
+
+        # # Query
+        # self.ui.plainTextEdit_2.insertPlainText(self.currentrecord.adql)
+    
     def dbsetup(self):
         data_dir = user_data_dir(self.appname)
 
@@ -298,6 +341,12 @@ class AppWindow(QMainWindow):
 
         ### Load catalogues from json files
         # self.copy_config_files(config_dir)   
+
+
+                # read json schema, catalogues
+        with open(self.resource_path(self.templates_file), 'r') as f:
+            data = f.read()
+            self.templates_data = json.loads(data)
         
         # read json schema, catalogues
         with open(self.resource_path(self.schema_file), 'r') as f:
@@ -328,7 +377,8 @@ class AppWindow(QMainWindow):
                             new_cat = Catalogue(name = catalogue["catalogue_name"],
                                                 authentication = catalogue["authentication"],
                                                 url = catalogue["url"],
-                                                signup = catalogue["signup"])
+                                                signup = catalogue["signup"],
+                                                template = catalogue["template"])
                             self.session.add(new_cat)                            
                             print(new_cat)
                     self.session.commit()
@@ -338,8 +388,11 @@ class AppWindow(QMainWindow):
 
                 # add cats to
                 for cat in cats:
-                    self.ui.comboSelectSource.addItem(cat.name,{"id":cat.catalogue_id, "sync": False, "url":cat.url,
-                                                                "signup":cat.signup})
+                    self.ui.comboSelectSource.addItem(cat.name,{"id":cat.catalogue_id,
+                                                                "sync": False,
+                                                                "url":cat.url,
+                                                                "signup":cat.signup,
+                                                                "template":cat.template})
                     print(cat)
 
                 print(self.session.new)
@@ -369,9 +422,9 @@ class AppWindow(QMainWindow):
         self.ui.cmb_filetype_aq.addItems(ftypes.enums)
         
 
-        self.currentrecord = self.session.query(CQuery).filter_by(id = 1).one_or_none()
-        if self.currentrecord:
-            self.display_query_record()
+        # self.currentrecord = self.session.query(CQuery).filter_by(id = 1).one_or_none()
+        # if self.currentrecord:
+        #     self.display_query_record()
             
         # read defined columns
         with open(self.resource_path(self.col_defs), 'r') as f:
@@ -739,68 +792,68 @@ class AppWindow(QMainWindow):
 
     # Set tooltips and icons
     def text_tooltips(self):
-        cols = "<h2>Required columns</h2><pre><code>0 x \n" \
-            "1 y\n" \
-            "2 z\n" \
-            "3 color\n" \
-            "4 - not used\n" \
-            "5 absmag\n" \
-            "6 - not used\n" \
-            "7 - not used\n" \
-            "8 - not used\n" \
-            "9 - not used\n" \
-            "10 - not used\n" \
-            "11 - not used\n" \
-            "12 - not used\n" \
-            "13 vx\n" \
-            "14 vy\n" \
-            "15 vz\n" \
-            "16 speed\n" \
-            "</code></pre>"
-        self.ui.lbl_speck.setToolTip(cols)
+        # cols = "<h2>Required columns</h2><pre><code>0 x \n" \
+        #     "1 y\n" \
+        #     "2 z\n" \
+        #     "3 color\n" \
+        #     "4 - not used\n" \
+        #     "5 absmag\n" \
+        #     "6 - not used\n" \
+        #     "7 - not used\n" \
+        #     "8 - not used\n" \
+        #     "9 - not used\n" \
+        #     "10 - not used\n" \
+        #     "11 - not used\n" \
+        #     "12 - not used\n" \
+        #     "13 vx\n" \
+        #     "14 vy\n" \
+        #     "15 vz\n" \
+        #     "16 speed\n" \
+        #     "</code></pre>"
+        # self.ui.lbl_speck.setToolTip(cols)
 
-        cols = "<h2>Required columns</h2><pre><code>" \
-            "Position_X\n" \
-            "Position_Y\n" \
-            "Position_Z\n" \
-            "Velocity_X\n" \
-            "Velocity_Y\n" \
-            "Velocity_Z\n" \
-            "Gaia_Parallax\n" \
-            "Gaia_G_Mag\n" \
-            "Tycho_B_Mag\n" \
-            "Tycho_V_Mag\n" \
-            "Gaia_Parallax_Err\n" \
-            "Gaia_Proper_Motion_RA\n" \
-            "Gaia_Proper_Motion_RA_Err\n" \
-            "Gaia_Proper_Motion_Dec\n" \
-            "Gaia_Proper_Motion_Dec_Err\n" \
-            "Tycho_B_Mag_Err\n" \
-            "Tycho_V_Mag_Err\n" \
-            "</code></pre>"
-        self.ui.lbl_sfits.setToolTip(cols)
+        # cols = "<h2>Required columns</h2><pre><code>" \
+        #     "Position_X\n" \
+        #     "Position_Y\n" \
+        #     "Position_Z\n" \
+        #     "Velocity_X\n" \
+        #     "Velocity_Y\n" \
+        #     "Velocity_Z\n" \
+        #     "Gaia_Parallax\n" \
+        #     "Gaia_G_Mag\n" \
+        #     "Tycho_B_Mag\n" \
+        #     "Tycho_V_Mag\n" \
+        #     "Gaia_Parallax_Err\n" \
+        #     "Gaia_Proper_Motion_RA\n" \
+        #     "Gaia_Proper_Motion_RA_Err\n" \
+        #     "Gaia_Proper_Motion_Dec\n" \
+        #     "Gaia_Proper_Motion_Dec_Err\n" \
+        #     "Tycho_B_Mag_Err\n" \
+        #     "Tycho_V_Mag_Err\n" \
+        #     "</code></pre>"
+        # self.ui.lbl_sfits.setToolTip(cols)
         
-        cols = "<h2>Required columns</h2><pre><code>" \
-            "ra\n" \
-            "ra_error\n" \
-            "dec\n" \
-            "dec_error\n" \
-            "parallax\n" \
-            "parallax_error\n" \
-            "pmra\n" \
-            "pmra_error\n" \
-            "pmdec\n" \
-            "pmdec_error\n" \
-            "phot_g_mean_mag\n" \
-            "phot_bp_mean_mag\n" \
-            "phot_rp_mean_mag\n" \
-            "bp_rp\n" \
-            "bp_g\n" \
-            "g_rp\n" \
-            "radial_velocity\n" \
-            "radial_velocity_error\n" \
-            "</code></pre>"
-        self.ui.lbl_mfits.setToolTip(cols)
+        # cols = "<h2>Required columns</h2><pre><code>" \
+        #     "ra\n" \
+        #     "ra_error\n" \
+        #     "dec\n" \
+        #     "dec_error\n" \
+        #     "parallax\n" \
+        #     "parallax_error\n" \
+        #     "pmra\n" \
+        #     "pmra_error\n" \
+        #     "pmdec\n" \
+        #     "pmdec_error\n" \
+        #     "phot_g_mean_mag\n" \
+        #     "phot_bp_mean_mag\n" \
+        #     "phot_rp_mean_mag\n" \
+        #     "bp_rp\n" \
+        #     "bp_g\n" \
+        #     "g_rp\n" \
+        #     "radial_velocity\n" \
+        #     "radial_velocity_error\n" \
+        #     "</code></pre>"
+        # self.ui.lbl_mfits.setToolTip(cols)
 
         self.ui.ButtonADQL.setToolTip("Generates a query based on" \
                                       " the selected columns and conditions")
@@ -920,7 +973,7 @@ class AppWindow(QMainWindow):
         tables = []
         context = s_context.split()[0]
         cat = s_context.split()[1]
-        print(cat,context)
+        # print(cat,context)
         if self.ad_context[cat]["auth"] and not self.ad_context[cat]["token"]:
             print("Authentication required")
             login = signIn(parent=self,catalogue=cat,urlsignup = tables_sync["signup"])
@@ -960,6 +1013,11 @@ class AppWindow(QMainWindow):
         self.model = tableModel(session=self.session,catname=s_context)
         self.ui.listView.setModel(self.model)
 
+        # fill in templates combobox
+        for template in self.templates_data[tables_sync["template"]]:
+            self.ui.comboBox_templates.addItem(template)
+
+
     def clear_convert_tab(self):
         # convert tab
         # Source file to convert to -speck file
@@ -986,6 +1044,7 @@ class AppWindow(QMainWindow):
         self.clearBoxLayout(self.vbox)
         self.ui.comboBox_3.clear()
         self.ui.comboBox.clear()
+        self.ui.comboBox_templates.clear()
         self.clearBoxLayout(self.ac_vbox)
         self.ui.plainTextEdit_2.clear()
         self.ui.lE_filepath_ad.clear()
@@ -1372,7 +1431,8 @@ class AppWindow(QMainWindow):
             print("TABLE NAME:",tab_name)
             # Update columns of the selected table in the database
             catid = self.ui.comboSelectSource.currentData()["id"]
-            dbtab = self.session.query(Cat_table).filter(and_(Cat_table.name == tab_name,Cat_table.catalogue_id==catid)).one_or_none()
+            dbtab = self.session.query(Cat_table).filter(and_(Cat_table.name == tab_name,
+                                                              Cat_table.catalogue_id==catid)).one_or_none()
             ndbcols = self.session.query(TColumn).join(Cat_table).filter(Cat_table.id==dbtab.id).count()
             print("server table:",len(x_table),"local table:",ndbcols)
             if len(x_table) > ndbcols:
