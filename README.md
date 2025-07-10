@@ -122,9 +122,35 @@ pyinstaller.exe --onefile --add-data "./env/Lib/site-packages/astroquery/CITATIO
 .\dist\domecat.exe
 ```
 
-## Usage
 
-## Credits
+## 📚 References
+
+If you use **DomeCat** in your work or research, please cite the following publication:
+
+> V. Soancatl-Aguilar, O.~R. Williams, C. Ji, E.~A. Valentijn, A. Mathlener, and J.~B.~T.~M. Roerdink.  
+> **Visualising Virtual Observatory Data in Digital Planetaria.**  
+> *Astronomical Society of the Pacific Conference Series*, vol. 522, pp. 229, 2020.  
+> In *Astronomical Data Analysis Software and Systems XXIX (ADASS XXIX)*.  
+> Editors: R. Pizzo, E.~R. Deul, J.~D. Mol, J. de Plaa, H. Verkouter.  
+> Conference held 06–10 October 2019.  
+> [ADS Bibcode: 2020ASPC..522..229S](https://ui.adsabs.harvard.edu/abs/2020ASPC..522..229S)
+
+**BibTeX:**
+```bibtex
+@inproceedings{d4001b8f2f3c453aa1cf5f79ea79f3f0,
+  title     = {Visualising Virtual Observatory Data in Digital Planetaria},
+  author    = {V. Soancatl-Aguilar and O.~R. Williams and C. Ji and E.~A. Valentijn and A. Mathlener and J.~B.~T.~M. Roerdink},
+  year      = {2020},
+  month     = jan,
+  day       = {1},
+  language  = {English},
+  series    = {Astronomical Society of the Pacific Conference Series},
+  publisher = {Astronomical Society of the Pacific},
+  pages     = {229},
+  editor    = {R. Pizzo and E.~R. Deul and J.~D. Mol and {de Plaa}, J. and H. Verkouter},
+  booktitle = {Astronomical Society of the Pacific Conference Series},
+  note      = {Astronomical Data Analysis Software and Systems XXIX : (ADASS XXIX) ; Conference date: 06-10-2019 Through 10-10-2019},
+}
 
 ## License
 
