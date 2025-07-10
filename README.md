@@ -151,7 +151,7 @@ If you use **DomeCat** in your work or research, please cite the following publi
   booktitle = {Astronomical Society of the Pacific Conference Series},
   note      = {Astronomical Data Analysis Software and Systems XXIX : (ADASS XXIX) ; Conference date: 06-10-2019 Through 10-10-2019},
 }
-
+```
 ## License
 
 
